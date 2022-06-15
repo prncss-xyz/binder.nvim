@@ -14,6 +14,22 @@ function M.bind_keymap_legendary(args)
   end
 end
 
+local _current_id = 0
+
+local function next_id()
+  _current_id = _current_id + 1
+  return _current_id
+end
+
+function M.light_command_legendary(keymap_)
+  local keymap = {
+    string.format('<plug>(my-%d)', next_id()),
+    keymap_[1],
+    description = keymap_.desc,
+  }
+  require('legendary').bind_keymap(keymap)
+end
+
 function M.prepend(c)
   return function(keys, key)
     return keys .. c, key
