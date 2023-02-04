@@ -68,6 +68,9 @@ function M.b(args)
           lhs = acc.keys,
           cb = string.format(':<c-u>%s<cr>', cb),
           desc = acc.descs,
+          expr = acc.expr,
+          silent = acc.silent,
+          remap = acc.remap,
           modes = { 'o' },
         })
         m = m:sub(1, i - 1) .. m:sub(i + 1, m:len())
@@ -77,6 +80,9 @@ function M.b(args)
           lhs = acc.keys,
           cb = string.format(':%s<cr>', cb),
           desc = acc.descs,
+          expr = acc.expr,
+          silent = acc.silent,
+          remap = acc.remap,
           modes = chars(m),
         })
       end
@@ -85,6 +91,9 @@ function M.b(args)
         lhs = acc.keys,
         cb = cb,
         desc = acc.descs,
+        expr = acc.expr,
+        silent = acc.silent,
+        remap = acc.remap,
         modes = chars(acc.modes),
       })
     end

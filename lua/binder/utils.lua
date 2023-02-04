@@ -1,14 +1,15 @@
 local M = {}
 
-function M.bind_keymap_legendary(args)
+function M.keymap_legendary(args)
   -- avoids displaying <nop> bindings in legendary popup
   if args.cb == '<nop>' then
     vim.keymap.set(args.modes, args.lhs, '<nop>', {})
   else
-    require('legendary').bind_keymap({
+    require('legendary').keymap({
       args.lhs,
       args.cb,
       description = args.desc,
+      opts = { expr = args.expr, silent = args.silent, remap = args.remap },
       mode = args.modes,
     })
   end
@@ -27,7 +28,7 @@ function M.light_command_legendary(keymap_)
     keymap_[1],
     description = keymap_.desc,
   }
-  require('legendary').bind_keymap(keymap)
+  require('legendary').keymap(keymap)
 end
 
 function M.prepend(c)
