@@ -5,6 +5,9 @@ function M.keymap_legendary(args)
   if args.cb == '<nop>' then
     vim.keymap.set(args.modes, args.lhs, '<nop>', {})
   else
+    if args.silent == nil then
+      args.silent = true
+    end
     require('legendary').keymap({
       args.lhs,
       args.cb,
